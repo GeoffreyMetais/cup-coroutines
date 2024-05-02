@@ -4,13 +4,14 @@ import SlideTitle
 import TitleSlide
 import codeSnippet
 import net.kodein.cup.Slide
+import net.kodein.cup.Slides
 import net.kodein.cup.sa.rememberSourceCode
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 
-val title_dispatching by TitleSlide("Dispatching")
+private val title_dispatching by TitleSlide("Dispatching")
 
 @OptIn(ExperimentalResourceApi::class)
-val dispatching by Slide(stepCount = 3) { step ->
+private val dispatching by Slide(stepCount = 3) { step ->
 
     val sourceCode = rememberSourceCode("java") {
         val launch by marker(hidden(0))
@@ -38,3 +39,5 @@ val dispatching by Slide(stepCount = 3) { step ->
     SlideTitle(text = "Dispatch vs Immediate")
     codeSnippet(sourceCode, step)
 }
+
+val dispatchingSlides = Slides(title_dispatching, dispatching)

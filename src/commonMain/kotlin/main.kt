@@ -66,14 +66,8 @@ fun main() = cupApplication(
 
 val presentationSlides = Slides(
     intro,
-    title_suspend,
-    running_coroutines,
-    title_dispatching,
-    looper,
-    dispatching,
-    title_context,
-    context,
-    title_scope,
-    scope,
-    scope2,
+    launchingCoroutinesSlides,
+    dispatchingSlides,
+    contextSlides,
+    scopeSlides,
 )

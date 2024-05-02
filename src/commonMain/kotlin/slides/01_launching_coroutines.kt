@@ -3,19 +3,21 @@ package slides
 import SlideTitle
 import TitleSlide
 import codeSnippet
+import lightCodeSnippet
 import net.kodein.cup.Slide
+import net.kodein.cup.Slides
 import net.kodein.cup.sa.rememberSourceCode
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 
-val title_suspend by TitleSlide("Suspending vs blocking")
+private val title_suspend by TitleSlide("Suspending vs blocking")
 
 @OptIn(ExperimentalResourceApi::class)
-val running_coroutines by Slide(stepCount = 3) {step ->
+private val running_coroutines by Slide(stepCount = 3) { step ->
 
-   val sourceCode = rememberSourceCode("kotlin") {
+    val sourceCode = rememberSourceCode("kotlin") {
         val job by marker(hidden(0))
         val join by marker(onlyShown(2))
-       val launch by marker(hidden(2))
+        val launch by marker(hidden(2))
         //language=kotlin
         """
         ${launch}
@@ -39,7 +41,24 @@ val running_coroutines by Slide(stepCount = 3) {step ->
         ${X}
         """.trimIndent()
     }
-    
+
     SlideTitle(text = "Launching coroutines")
     codeSnippet(sourceCode, step)
 }
+
+private val code = """
+function main
+    initialize()
+    while message != quit
+        message := get_next_message()
+        process_message(message)
+    end while
+end function
+""".trimIndent()
+
+private val looper by Slide {
+    SlideTitle("Application looper")
+    lightCodeSnippet(code, language = "C")
+}
+
+val launchingCoroutinesSlides = Slides(title_suspend, running_coroutines, looper)
