@@ -3,6 +3,7 @@ package slides
 import SlideTitle
 import TitleSlide
 import codeSnippet
+import lightCodeSnippet
 import net.kodein.cup.Slide
 import net.kodein.cup.Slides
 import net.kodein.cup.sa.rememberSourceCode
@@ -59,4 +60,19 @@ private val scope2 by Slide(stepCount = 3) {
     codeSnippet(sourceCode, it)
 }
 
-val scopeSlides = Slides(title_scope, scope, scope2)
+private val scope3 by Slide {
+    val code = """
+    public interface CoroutineScope {
+    /**
+        * The context of this scope.
+        * [blablabla]
+        * By convention, should contain an instance of a [job][Job]
+        * to enforce structured concurrency.
+        */
+    public val coroutineContext: CoroutineContext
+}
+        """.trimIndent()
+    lightCodeSnippet(code)
+}
+
+val scopeSlides = Slides(title_scope, scope, scope2, scope3)
