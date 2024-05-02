@@ -11,12 +11,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.PointerIcon
 import androidx.compose.ui.input.pointer.pointerHoverIcon
 import androidx.compose.ui.platform.LocalUriHandler
+import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import net.kodein.cup.Slide
-import net.kodein.cup.sa.SourceCode
-import net.kodein.cup.sa.rememberSourceCode
+import net.kodein.cup.sa.*
+import net.kodein.cup.ui.styled
 
 internal fun TitleSlide(title: String, subTitle: String? = null) = Slide(if (subTitle == null) 1 else 2) { step ->
     Title(title)
@@ -82,5 +83,8 @@ fun Link(
                 uriHandler.openUri(url)
             }
     )
-
 }
+
+private val greyedOutStyle = SAStyle(SpanStyle(color = Color.DarkGray))
+public fun SourceCodeBuilder.greyedOut(vararg steps: Int): SourceCodeBuilder.State = styled(greyedOutStyle, *steps)
+public fun SourceCodeBuilder.greyedOut(vararg steps: IntRange): SourceCodeBuilder.State = styled(greyedOutStyle, *steps)
