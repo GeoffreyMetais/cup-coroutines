@@ -22,10 +22,8 @@ kotlin {
             // This tool is also part of the Speaker Mode window.
             implementation(cup.plugin.laser)
 
-            implementation(compose.material)
-//            implementation(compose.material3)
-            implementation("org.kodein.emoji:emoji-compose-m2:1.3.0")
-//            implementation("org.kodein.emoji:emoji-compose-m3:1.3.0
+//            implementation(compose.material)
+            implementation(compose.material3)
         }
     }
 }
