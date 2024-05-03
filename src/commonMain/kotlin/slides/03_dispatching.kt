@@ -41,7 +41,7 @@ private val dispatching by Slide(stepCount = 3) { step ->
     codeSnippet(sourceCode, step)
 }
 
-private val dispathing2 by Slide(stepCount = 6) { step ->
+private val dispathing2 by Slide(stepCount = 7) { step ->
     val code_log = rememberSourceCode("kotlin") {
         val create by marker(onlyShown(1..3))
         val start by marker(onlyShown(2..3))
@@ -49,13 +49,16 @@ private val dispathing2 by Slide(stepCount = 6) { step ->
         ensureStep(3)
         val immediate by marker(onlyShown(4..5))
         val immediatehl by marker(highlighted(4))
-        val secondRun by marker(onlyShown(5))
+        val secondRun by marker(onlyShown(5..6))
+        val yield by marker(onlyShown(6))
         //language=kotlin
         """
         override fun onCreate(savedInstanceState: Bundle?) {
             Log.d(TAG, "onCreate")
             launch(Dispatchers.Main${immediate}${immediatehl}.immediate${X}${X}) {
                 Log.d(TAG, "coroutine!")
+        ${yield}        yield()
+                Log.d(TAG, "coroutine resumed!")${X}
             }
             Log.d(TAG, "onCreate end")
         }
@@ -71,11 +74,10 @@ private val dispathing2 by Slide(stepCount = 6) { step ->
         coroutine!
         onCreate end
         onStart${X}
-
+        ${yield}coroutine resumed!${X}
         """.trimIndent()
     }
     codeSnippet(code_log, step)
 }
-
 
 val dispatchingSlides = Slides(title_dispatching, dispatching, dispathing2)
