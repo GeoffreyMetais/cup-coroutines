@@ -62,4 +62,6 @@ val presentationSlides = Slides(
     dispatchingSlides,
     contextSlides,
     scopeSlides,
+    coroutineSlides,
+    flow_slides,
 )

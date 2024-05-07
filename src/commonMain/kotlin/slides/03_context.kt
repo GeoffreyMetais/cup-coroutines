@@ -26,7 +26,7 @@ private val context by Slide {
         val dispatcher = Dispatchers.Default
         val name = "image processing context"
         
-        launch(dispatcher+exceptionHandler+job+name) { ... }
+        scope.launch(dispatcher+exceptionHandler+job+name) { ... }
         """.trimIndent()
     }
 

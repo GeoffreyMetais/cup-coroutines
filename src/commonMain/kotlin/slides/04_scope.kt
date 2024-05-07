@@ -34,7 +34,6 @@ private val scope by Slide(stepCount = 3) { step ->
     codeSnippet(sourceCode, step)
 }
 
-@OptIn(ExperimentalResourceApi::class)
 private val scope2 by Slide(stepCount = 3) {
 
     val sourceCode = rememberSourceCode("kotlin") {
@@ -69,10 +68,10 @@ private val scope3 by Slide {
         * By convention, should contain an instance of a [job][Job]
         * to enforce structured concurrency.
         */
-    public val coroutineContext: CoroutineContext
-}
+        public val coroutineContext: CoroutineContext
+    }
         """.trimIndent()
     lightCodeSnippet(code)
 }
 
-val scopeSlides = Slides(title_scope, scope, scope2, scope3)
+val scopeSlides = Slides(title_scope, scope3, scope, scope2)

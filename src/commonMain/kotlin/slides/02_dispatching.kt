@@ -3,6 +3,7 @@ package slides
 import SlideTitle
 import TitleSlide
 import codeSnippet
+import lightCodeSnippet
 import net.kodein.cup.Slide
 import net.kodein.cup.Slides
 import net.kodein.cup.sa.rememberSourceCode
@@ -47,7 +48,7 @@ private val dispathing2 by Slide(stepCount = 7) { step ->
         val start by marker(onlyShown(2..3))
         val coroutine by marker(onlyShown(3))
         ensureStep(3)
-        val immediate by marker(onlyShown(4..5))
+        val immediate by marker(onlyShown(4..6))
         val immediatehl by marker(highlighted(4))
         val secondRun by marker(onlyShown(5..6))
         val yield by marker(onlyShown(6))
@@ -80,4 +81,19 @@ private val dispathing2 by Slide(stepCount = 7) { step ->
     codeSnippet(code_log, step)
 }
 
-val dispatchingSlides = Slides(title_dispatching, dispatching, dispathing2)
+private val code = """
+function main
+    initialize()
+    while message != quit
+        message := get_next_message()
+        process_message(message)
+    end while
+end function
+""".trimIndent()
+
+private val looper by Slide {
+    SlideTitle("Application looper")
+    lightCodeSnippet(code, language = "C")
+}
+
+val dispatchingSlides = Slides(title_dispatching, dispatching, looper, dispathing2)

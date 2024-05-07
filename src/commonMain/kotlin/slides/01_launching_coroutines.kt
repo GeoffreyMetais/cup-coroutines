@@ -23,7 +23,9 @@ private val running_coroutines by Slide(stepCount = 3) { step ->
         ${launch}
         scope.launch() {
             // Get from IO context
-            val image = withContext(ioDispatcher) { getImage() } 
+            val image = withContext(ioDispatcher) { getImage() }
+            // stop if Job is cancelled
+            ensureActive()
             // Back on main thread
             imageView.setImageBitmap(image)
         }${X}
@@ -46,19 +48,4 @@ private val running_coroutines by Slide(stepCount = 3) { step ->
     codeSnippet(sourceCode, step)
 }
 
-private val code = """
-function main
-    initialize()
-    while message != quit
-        message := get_next_message()
-        process_message(message)
-    end while
-end function
-""".trimIndent()
-
-private val looper by Slide {
-    SlideTitle("Application looper")
-    lightCodeSnippet(code, language = "C")
-}
-
-val launchingCoroutinesSlides = Slides(title_suspend, running_coroutines, looper)
+val launchingCoroutinesSlides = Slides(title_suspend, running_coroutines)
