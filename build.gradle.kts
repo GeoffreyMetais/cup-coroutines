@@ -6,6 +6,7 @@ plugins {
 
 cup {
     targetDesktop()
+    targetWeb()
 }
 
 kotlin {
@@ -22,8 +23,8 @@ kotlin {
             // This tool is also part of the Speaker Mode window.
             implementation(cup.plugin.laser)
 
-//            implementation(compose.material)
-            implementation(compose.material3)
+            implementation(compose.material)
+//            implementation(compose.material3)
         }
     }
 }
