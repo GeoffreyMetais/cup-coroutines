@@ -47,7 +47,6 @@ private val dispathing2 by Slide(stepCount = 7) { step ->
         val create by marker(onlyShown(1..3))
         val start by marker(onlyShown(2..3))
         val coroutine by marker(onlyShown(3))
-        ensureStep(3)
         val immediate by marker(onlyShown(4..6))
         val immediatehl by marker(highlighted(4))
         val secondRun by marker(onlyShown(5..6))

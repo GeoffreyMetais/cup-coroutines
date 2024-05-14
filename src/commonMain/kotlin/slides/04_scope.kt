@@ -16,7 +16,6 @@ private val scope by Slide(stepCount = 3) { step ->
 
     val sourceCode = rememberSourceCode("kotlin") {
         val global by marker(onlyShown(1))
-        ensureStep(2)
         //language=kotlin
         """
         coroutineScope { 
@@ -38,7 +37,6 @@ private val scope2 by Slide(stepCount = 3) {
 
     val sourceCode = rememberSourceCode("kotlin") {
         val cancel by marker(highlighted(1))
-        ensureStep(2)
         //language=kotlin
         """
         open class ScopedViewModel : ViewModel() {

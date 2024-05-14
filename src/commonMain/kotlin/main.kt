@@ -12,7 +12,7 @@ import cup_presentation_coroutines.generated.resources.Res
 import net.kodein.cup.*
 import net.kodein.cup.laser.laser
 import net.kodein.cup.speaker.speakerWindow
-import net.kodein.cup.ui.cupScaleDown
+import net.kodein.cup.widgets.material.cupScaleDown
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 import slides.*

@@ -1,7 +1,7 @@
 plugins {
     kotlin("multiplatform") version "1.9.23"
     id("org.jetbrains.compose") version "1.6.1"
-    id("net.kodein.cup") version "1.0.0-Beta-01"
+    id("net.kodein.cup") version "1.0.0-Beta-02"
 }
 
 cup {
@@ -24,7 +24,7 @@ kotlin {
             implementation(cup.plugin.laser)
 
             implementation(compose.material)
-//            implementation(compose.material3)
+            implementation(cup.widgets.material)
         }
     }
 }
